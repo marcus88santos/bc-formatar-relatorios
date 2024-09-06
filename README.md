@@ -39,7 +39,7 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
 | Python                                              |  
 
 <br />
-### **Bibliotecas**:
+### Bibliotecas
   - `openpyxl`: Utilizada para manipulação de planilhas Excel (leitura, edição e formatação).
   - `datetime`: Utilizada para trabalhar com datas, como nomeação de arquivos e uso em relatórios.
   - `locale`: Utilizada para configurar a localização da aplicação e formatar corretamente as datas e números para o padrão brasileiro.
