@@ -39,6 +39,7 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
 | Python                                              |  
 
 <br />
+
 ### Bibliotecas
 
   - `openpyxl`: Utilizada para manipulação de planilhas Excel (leitura, edição e formatação).
