@@ -3,8 +3,15 @@
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 <br />
-Esta aplicação automatiza a formatação de relatórios em planilhas Excel gerados a partir de um orçamento. O objetivo é otimizar a visualização e organização das planilhas para facilitar a análise dos dados. Antes, cada ciclo de formatação durava cerca de **20 min**, agora pode ser realizado em **segundos**.
+Esta aplicação automatiza a formatação de relatórios em planilhas Excel gerados a partir de um orçamento. O objetivo é otimizar a visualização e organização das planilhas para facilitar a análise dos dados.<br />
+<br />
 
+Duração de cada ciclo de formatação:<br />
+>~~cerca de 20 min~~<br />
+>**alguns segundos**
+
+
+<br />
 ## :hammer: Funcionalidades
 
 1. **Formatação dos relatórios**:
