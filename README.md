@@ -10,8 +10,8 @@ Duração de cada ciclo de formatação:<br />
 >~~cerca de 20 min~~<br />
 >**alguns segundos**
 
-
 <br />
+
 ## :hammer: Funcionalidades
 
 1. **Formatação dos relatórios**:
@@ -28,6 +28,8 @@ Duração de cada ciclo de formatação:<br />
    - Verificação e ajuste de valores com zeros indesejados.
    - Salvar o relatório com nomeação automática baseada no tipo e no nome do empreendimento.
 
+<br />
+
 ## :page_facing_up: Estrutura do Código
 
 O código é dividido em várias funções para lidar com as diferentes etapas da formatação, como:
@@ -38,6 +40,8 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
   - `modifica_banco_dados()`: desmescla células e atualiza informações do banco de dados.
   - `salvar_relatorio()`: salva o relatório formatado com nome adequado.
   - `aumentar_largura_coluna()`: ajusta a largura das colunas com base no conteúdo.
+
+<br />
 
 ## ✔️ Técnicas e tecnologias utilizadas
 
@@ -51,6 +55,8 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
 - `datetime`: Utilizada para trabalhar com datas, como nomeação de arquivos e uso em relatórios.
 - `locale`: Utilizada para configurar a localização da aplicação e formatar corretamente as datas e números para o padrão brasileiro.
 - `dotenv`: Utilizada para as variáveis de ambiente
+
+<br />
 
 ## 🛠️ Como Usar
 
@@ -72,10 +78,14 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
 3. **Resultado**:
    - O relatório formatado será salvo automaticamente no mesmo diretório, com o nome ajustado de acordo com as especificações.
 
+<br />
+
 ## ✨ Observações
 
 - As funções estão configuradas para trabalhar com relatórios específicos. É possível adaptar para outros tipos de relatórios ajustando as funções de acordo com a necessidade.
 - O código atual remove linhas de grade e ajusta o layout para uma visualização mais clara dos dados.
+
+<br />
 
 ## 🚶 Autor
 
