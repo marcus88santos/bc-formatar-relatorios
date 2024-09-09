@@ -57,7 +57,7 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
 1. **Pré-requisitos**:
    - Instalar as bibliotecas:
      ```
-     pip install -r requirements.txt
+     pip install -r requeriments.txt
      ```
    - Criar um arquivo chamado '.env' na raiz do projeto, definindo a variável 'FOLDER' como sendo o caminho, a partir da pasta 'Users' (ou 'Usuários'), para formatar os relatórios
      ```
