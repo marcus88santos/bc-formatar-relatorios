@@ -94,6 +94,8 @@ def formatar_relatorio_abc_servicos(file, base_dados):
   
   maxRow = aplicar_filtro(aba, file, tamanho_cabecalho)
   
+  verifica_valor_zerado(aba, ['F'], tamanho_cabecalho, maxRow, file)
+  
   salvar_relatorio(planilha, file, empreendimento)
 
 def formatar_relatorio_abc_insumos(file, base_dados):
@@ -118,7 +120,7 @@ def formatar_relatorio_abc_insumos(file, base_dados):
   
   maxRow = aplicar_filtro(aba, file, tamanho_cabecalho)
   
-  verifica_valor_zerado(aba, ['F', 'H'], tamanho_cabecalho, maxRow)
+  verifica_valor_zerado(aba, ['F', 'H'], tamanho_cabecalho, maxRow, file)
   
   excluir_coluna(aba, ['P', 'Q'])
   
@@ -330,7 +332,7 @@ def modifica_banco_dados(file, aba, base_dados):
 #     os.remove(destino)
 #   shutil.copy2(fonte, destino)
 
-def verifica_valor_zerado(aba, colunas, tamanho_cabecalho, maxRow):
+def verifica_valor_zerado(aba, colunas, tamanho_cabecalho, maxRow, file):
   for col in colunas:
     for cel in aba[col]:
       if cel.row > maxRow:
@@ -338,6 +340,7 @@ def verifica_valor_zerado(aba, colunas, tamanho_cabecalho, maxRow):
       if cel.row > tamanho_cabecalho - 1:
         if cel.value is not None:
           if (cel.value == '0,00' or cel.value == '0,01'):
+            print('\n-> Erro no relatório: ' + file)
             print('-> Valor zerado encontrado: '+ cel.value +'\nCélula ' + col + str(cel.row))
             exit()
 
