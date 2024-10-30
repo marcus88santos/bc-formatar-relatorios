@@ -7,7 +7,7 @@ Esta aplicação automatiza a formatação de relatórios em planilhas Excel ger
 <br />
 
 Duração de cada ciclo de formatação:<br />
->~~cerca de 20 min~~<br />
+>~~pelo menos 20 min~~<br />
 >**alguns segundos**
 
 <br />
