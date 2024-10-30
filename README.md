@@ -61,7 +61,13 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
 ## 🛠️ Como Usar
 
 1. **Pré-requisitos**:
-   - Instalar as bibliotecas:
+   - Instalar Git, Python e um editor de código (neste caso, usei o VS Code)
+   - Abrir o VS Code, apertar ctrl+k e ctrl+o para escolher a pasta para onde será baixada a aplicação 
+   - Clonar o repositório
+      ```
+      git clone https://github.com/marcus88santos/bc-formatar-relatorios.git
+      ```
+   - Instalar as bibliotecas
      ```
      pip install -r requirements.txt
      ```
@@ -69,14 +75,14 @@ O código é dividido em várias funções para lidar com as diferentes etapas d
      ```
      echo "FOLDER=\(...)\caminho-da-pasta-com-os-relatorios" > .env
      ```
-2. **Execução**:
+3. **Execução**:
 
    - Execute o arquivo main.py
    - Defina o mês da database a ser impressa nos relatórios (de 1 a 12)
    - Defina o ano da database a ser impressa nos relatórios
 
-3. **Resultado**:
-   - O relatório formatado será salvo automaticamente no mesmo diretório, com o nome ajustado de acordo com as especificações.
+4. **Resultado**:
+   - O relatório formatado será salvo automaticamente na pasta definida no arquivo .env, com o nome ajustado de acordo com as especificações da empresa.
 
 <br />
 
