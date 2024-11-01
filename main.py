@@ -38,6 +38,19 @@ print('')
 # Iniciando o contador de tempo
 tempo = datetime.now().timestamp()
 
+# Ordenando os arquivos para iniciar com as curvas ABC
+for x, file in enumerate(files):
+  if file.endswith('.xlsx'):
+
+    if file.find("ABC de Insumos") != -1 and not file.startswith("05 - "):
+      continue
+    
+    if file.find("ABC de Serviços") != -1 and not file.startswith("06 - "):
+      continue
+    
+    files.append(file)
+    files.pop(x)
+
 # Percorrendo todos os relatórios
 for file in files:
   # print(file)

@@ -296,6 +296,8 @@ def remover_nome_bloqueado(file, aba):
 
 
 def congelar_paineis(aba, tamanho_cabecalho):
+  # Seleciona a célula A1
+  aba.sheet_view.topLeftCell = 'A1'
   aba.freeze_panes = f'A{tamanho_cabecalho + 1}'
 
 
