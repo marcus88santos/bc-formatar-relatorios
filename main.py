@@ -39,17 +39,18 @@ print('')
 tempo = datetime.now().timestamp()
 
 # Ordenando os arquivos para iniciar com as curvas ABC
-for x, file in enumerate(files):
-  if file.endswith('.xlsx'):
-
-    if file.find("ABC de Insumos") != -1 and not file.startswith("05 - "):
-      continue
+i = 0
+while (i < len(files)):
+  if files[i].endswith('.xlsx'):
     
-    if file.find("ABC de Serviços") != -1 and not file.startswith("06 - "):
+    if files[i].startswith("0"):
+      files.pop(i)
       continue
+    elif (files[i].find("ABC de Insumos") != -1 or files[i].find("ABC de Serviços") != -1) and i != 0:
+      files.insert(0, files[i])
+      files.pop(i+1)
     
-    files.append(file)
-    files.pop(x)
+  i += 1
 
 # Percorrendo todos os relatórios
 for file in files:
