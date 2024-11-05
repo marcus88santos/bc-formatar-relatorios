@@ -176,6 +176,10 @@ def formatar_relatorio_sintetico(file, base_dados):
 
   aumentar_largura_coluna(aba, ['I', 'J'], tamanho_cabecalho)
 
+  maxRow = max_row(aba, tamanho_cabecalho)
+
+  verifica_valor_zerado(aba, ['I'], tamanho_cabecalho, maxRow, file)
+
   salvar_relatorio(planilha, file, empreendimento)
 
 
@@ -212,14 +216,19 @@ def aplicar_filtro(aba, file, tamanho_cabecalho):
     if file.find(key) != -1:
       coluna = str(coluna_final_filtro[key])
 
+  maxRow = max_row(aba, tamanho_cabecalho)
+
+  aba.auto_filter.ref = f'A{tamanho_cabecalho}:{coluna}{maxRow}'
+
+  return maxRow
+
+
+def max_row(aba, tamanho_cabecalho):
   maxRow = 0
   for cell in aba['A']:
     if cell.row > tamanho_cabecalho:
       if cell.value is not None:
         maxRow = cell.row
-
-  aba.auto_filter.ref = f'A{tamanho_cabecalho}:{coluna}{maxRow}'
-
   return maxRow
 
 
@@ -366,11 +375,6 @@ def modifica_banco_dados(file, aba, base_dados):
       aba[range[0:2]].value = "Banco de Dados:\n" + \
           base_dados['mes'] + " / " + base_dados['ano']
 
-# def copiar_arquivo(fonte, destino, tamanho_cabecalho):
-#   if os.path.exists(destino):
-#     os.remove(destino)
-#   shutil.copy2(fonte, destino)
-
 
 def verifica_valor_zerado(aba, colunas, tamanho_cabecalho, maxRow, file):
   for col in colunas:
@@ -379,8 +383,25 @@ def verifica_valor_zerado(aba, colunas, tamanho_cabecalho, maxRow, file):
         break
       if cel.row > tamanho_cabecalho - 1:
         if cel.value is not None:
-          if ((cel.value == '0,00' or cel.value == '0,01') and aba[f'B{str(cel.row)}'].value != 'SINAPI'):
+          if ((cel.value == '0,00' or cel.value == '0,01' or cel.value == 0 or cel.value == 0.01) and aba[f'B{str(cel.row)}'].value != 'SINAPI'):
             print('\n-> Erro no relatório: ' + file)
             print('-> Valor zerado encontrado: ' +
-                  cel.value + '\nCélula ' + col + str(cel.row))
+                  str(cel.value) + '\nCélula ' + col + str(cel.row))
             exit()
+
+
+def order_files(files):
+  new_files = ['', '', '']
+  for x in range(len(files)):
+    if files[x].endswith('.xlsx'):
+      if files[x].startswith('0'):
+        continue
+      elif files[x].find('ABC de Insumos') != -1:
+        new_files[0] = files[x]
+      elif files[x].find('ABC de Serviços') != -1:
+        new_files[1] = files[x]
+      elif files[x].find('Orçamento Sintético') != -1:
+        new_files[2] = files[x]
+      else:
+        new_files.append(files[x])
+  return new_files

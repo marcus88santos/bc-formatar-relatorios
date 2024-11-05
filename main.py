@@ -1,4 +1,4 @@
-from functions import formatar_relatorio_abc_servicos, formatar_relatorio_abc_insumos, formatar_relatorio_analitico, formatar_relatorio_analitico_preco_unit, formatar_relatorio_analitico_somente_insumos, formatar_relatorio_resumido, formatar_relatorio_sintetico, formatar_relatorio_sintetico_mo_eq_mat
+from functions import formatar_relatorio_abc_servicos, formatar_relatorio_abc_insumos, formatar_relatorio_analitico, formatar_relatorio_analitico_preco_unit, formatar_relatorio_analitico_somente_insumos, formatar_relatorio_resumido, formatar_relatorio_sintetico, formatar_relatorio_sintetico_mo_eq_mat, order_files
 from datetime import datetime
 import os
 from dotenv import load_dotenv
@@ -39,22 +39,11 @@ print('')
 tempo = datetime.now().timestamp()
 
 # Ordenando os arquivos para iniciar com as curvas ABC
-i = 0
-while (i < len(files)):
-  if files[i].endswith('.xlsx'):
-    
-    if files[i].startswith("0"):
-      files.pop(i)
-      continue
-    elif (files[i].find("ABC de Insumos") != -1 or files[i].find("ABC de Serviços") != -1) and i != 0:
-      files.insert(0, files[i])
-      files.pop(i+1)
-    
-  i += 1
+files = order_files(files)
 
 # Percorrendo todos os relatórios
 for file in files:
-  # print(file)
+  print(file)
   if file.endswith('.xlsx'):
 
     if file.find("ABC de Insumos") != -1 and not file.startswith("05 - "):
