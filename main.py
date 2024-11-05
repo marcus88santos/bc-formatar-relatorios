@@ -24,7 +24,8 @@ files = [f for f in os.listdir('.') if os.path.isfile(f)]
 mes = -1
 ano = 0
 while mes < 0 or mes > 12:
-  mes = int(input('-> Informe o MÊS da base de dados (de 1 a 12) ou digite 0 para cancelar:\n-> '))
+  mes = int(input(
+    '-> Informe o MÊS da base de dados (de 1 a 12) ou digite 0 para cancelar:\n-> '))
   if mes == 0:
     print('-> Procedimento cancelado...')
     exit()
@@ -43,7 +44,7 @@ files = order_files(files)
 
 # Percorrendo todos os relatórios
 for file in files:
-  print(file)
+  # print(file)
   if file.endswith('.xlsx'):
 
     if file.find("ABC de Insumos") != -1 and not file.startswith("05 - "):
