@@ -179,6 +179,8 @@ def formatar_relatorio_sintetico(file, base_dados):
   maxRow = max_row(aba, tamanho_cabecalho)
 
   verifica_valor_zerado(aba, ['I'], tamanho_cabecalho, maxRow, file)
+  
+  verifica_orcamento_corrompido(aba, ['D'], tamanho_cabecalho, maxRow, file)
 
   salvar_relatorio(planilha, file, empreendimento)
 
@@ -385,7 +387,7 @@ def verifica_valor_zerado(aba, colunas, tamanho_cabecalho, maxRow, file):
         if cel.value is not None:
           if ((cel.value == '0,00' or cel.value == '0,01' or cel.value == 0 or cel.value == 0.01) and aba[f'B{str(cel.row)}'].value != 'SINAPI'):
             print('\n-> Erro no relatório: ' + file)
-            print('-> Valor zerado encontrado: ' +
+            print('-> Valor zerado encontrado em: ' +
                   str(cel.value) + '\nCélula ' + col + str(cel.row))
             exit()
 
@@ -405,3 +407,17 @@ def order_files(files):
       else:
         new_files.append(files[x])
   return new_files
+
+
+def verifica_orcamento_corrompido(aba, colunas, tamanho_cabecalho, maxRow, file):
+  for col in colunas:
+    for cel in aba[col]:
+      if cel.row > maxRow:
+        break
+      if cel.row > tamanho_cabecalho - 1:
+        if cel.value is not None:
+          if (cel.value.lower() == 'editar descrição' or cel.value.lower() == 'undefined'):
+            print('\n-> Erro no relatório: ' + file)
+            print('-> Orçamento corrompido. Erro encontrado em: ' +
+                  str(cel.value) + '\nCélula ' + col + str(cel.row))
+            exit()
